@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  evaluacion-oauth2:
+    build:
+      context: auth-server
+    container_name: evaluacion-oauth2
+    ports:
+      - "9000:9000"
+    networks:
+      - spring-net
+
+  evaluacion-client:
+    build:
+      context: client-app
+    container_name: evaluacion-client
+    ports:
+      - "8081:8081"
+    networks:
+      - spring-net
+
+networks:
+  spring-net:
+    driver: bridge
